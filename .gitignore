@@ -1,0 +1,5 @@
+# Never commit raw chat exports
+*.txt
+*.zip
+.DS_Store
+.claude/

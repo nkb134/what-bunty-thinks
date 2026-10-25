@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>What Bunty Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>:root {
+  --bg: #fff; --ink: #0a0a0a; --muted: #6f6f6f; --faint: #a3a3a3; --line: #ececec; --soft: #f6f6f6;
+  --blue: #4a8cf5; --blue-d: #2f6bd6; --bubble-me: #e3f8d0; --bubble-them: #fff; --name: #2f6bd6;
+  --serif: 'EB Garamond', Georgia, serif; --sans: 'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.5 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); border-bottom: 1px solid #f1f1f1; }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.logo { width: 34px; height: 34px; border-radius: 50%; display: block; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; color: #fff; font-weight: 600; font-size: 14px;
+  background: linear-gradient(#5d9bfa, #3d7ce9); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 2px 0 var(--blue-d), 0 4px 10px rgba(61,124,233,.25); transition: transform .12s; }
+.pill:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 1px 0 var(--blue-d); }
+
+/* Hero */
+.hero { text-align: center; padding: 110px 16px 40px; }
+.cluster { display: flex; justify-content: center; margin-bottom: 26px; }
+.cluster span { width: 56px; height: 56px; border-radius: 50%; margin: 0 -6px; display: grid; place-items: center; font-size: 26px;
+  border: 3px solid #fff; box-shadow: 0 4px 14px rgba(0,0,0,.12); animation: bob 4s ease-in-out infinite; }
+.cluster span:nth-child(2n) { animation-delay: -2s; }
+.cluster svg { width: 100%; height: 100%; border-radius: 50%; }
+@keyframes bob { 50% { transform: translateY(-4px); } }
+h1.hl { font-size: clamp(32px, 5.4vw, 46px); font-weight: 500; letter-spacing: -.025em; line-height: 1.12; max-width: 560px; margin: 0 auto; }
+.sub { color: var(--muted); max-width: 470px; margin: 20px auto 0; font-size: 16px; }
+.cta { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 200px; height: 46px; margin-top: 38px;
+  background: #111; color: #fff; border-radius: 10px; font-size: 17px; isolation: isolate; transition: transform .15s; }
+.cta::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 3px; border-radius: 0 0 10px 10px; z-index: -1;
+  background: linear-gradient(90deg, #ff7a59, #ffd23f, #5ee07a, #4a8cf5, #b05cff, #ff7a59); background-size: 200% 100%; animation: slide 4s linear infinite; }
+.cta::before { content: ''; position: absolute; inset: 70% 14% -45%; z-index: -2; filter: blur(20px); opacity: .5;
+  background: linear-gradient(90deg, #ff7a59, #ffd23f, #5ee07a, #4a8cf5, #b05cff); background-size: 200% 100%; animation: slide 4s linear infinite; }
+.cta:hover { transform: translateY(-1px); }
+@keyframes slide { to { background-position: 200% 0; } }
+
+/* Chip marquees */
+.rows { margin: 70px auto 0; max-width: 720px; display: grid; gap: 10px; padding: 8px 0;
+  -webkit-mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.row { display: flex; gap: 10px; width: max-content; animation: marq 46s linear infinite; padding-bottom: 4px; }
+.row.rev { animation-direction: reverse; animation-duration: 52s; }
+.row:nth-child(3) { animation-duration: 58s; }
+.rows:hover .row { animation-play-state: paused; }
+@keyframes marq { to { transform: translateX(-50%); } }
+.chip { display: inline-flex; align-items: center; gap: 9px; height: 42px; padding: 0 14px 0 6px; border-radius: 12px; background: #fff; white-space: nowrap;
+  border: 1px solid #e7e7e7; box-shadow: 0 3px 0 #e9e9e9; font-size: 14px; font-weight: 600; transition: transform .12s, box-shadow .12s; }
+.chip:hover { transform: translateY(-1px); box-shadow: 0 4px 0 #e2e2e2; }
+.chip.on { border-color: #cfe0fd; box-shadow: 0 3px 0 #c5d9fb; background: #f5f9ff; }
+.chip i { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 16px; }
+.chip.add i { background: var(--soft); color: var(--muted); }
+
+/* Demo story */
+.stage { width: min(340px, 100%); margin: 70px auto 0; text-align: left; }
+.stage .stats > div { text-align: center; }
+.bars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 14px; }
+.bars span { height: 4px; border-radius: 4px; background: #e8e8e8; overflow: hidden; }
+.bars b { display: block; height: 100%; width: 0; background: #7a7a7a; border-radius: 4px; }
+.screen { position: relative; height: 420px; cursor: pointer; }
+.panel { position: absolute; inset: 0; opacity: 0; transform: translateY(8px); transition: opacity .45s, transform .45s; pointer-events: none; }
+.panel.on { opacity: 1; transform: none; pointer-events: auto; }
+.card { background: #fff; border: 1px solid #ededed; border-radius: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 8px 24px rgba(0,0,0,.04); }
+.scan { overflow: hidden; -webkit-mask: linear-gradient(transparent, #000 12%, #000 88%, transparent); mask: linear-gradient(transparent, #000 12%, #000 88%, transparent); }
+.scan .feed { display: flex; flex-direction: column; gap: 8px; padding: 30px 2px; transition: transform 5.2s linear; }
+.scanner { position: absolute; left: -12px; right: -12px; top: 46%; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent);
+  box-shadow: 0 0 24px 6px rgba(74,140,245,.25); }
+.scanner .logo { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; transform: translate(-50%, -50%); border: 3px solid #fff; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+.count { position: absolute; top: -2px; left: 0; right: 0; text-align: center; font-size: 12px; color: var(--faint); }
+
+/* Bubbles */
+.b { max-width: 82%; padding: 6px 10px 4px; border-radius: 10px; font-size: 14px; line-height: 1.35; box-shadow: 0 1px 1.5px rgba(0,0,0,.09); word-wrap: break-word; }
+.b.them { align-self: flex-start; background: var(--bubble-them); border-top-left-radius: 3px; }
+.b.me { align-self: flex-end; background: var(--bubble-me); border-top-right-radius: 3px; }
+.b small { display: block; font-size: 11px; color: var(--name); font-weight: 600; margin-bottom: 1px; }
+.b time { display: block; text-align: right; font-size: 10.5px; color: #9aa09a; margin-top: 1px; }
+.thread { display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 14px; margin: 18px 0;
+  background: #efeae2 radial-gradient(rgba(0,0,0,.035) 1px, transparent 1px) 0 0 / 14px 14px; }
+
+/* Stats grid (demo + report) */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border-radius: 14px; overflow: hidden; border: 1px solid var(--line); }
+.stats > div { background: #fff; padding: 12px 14px; min-height: 70px; }
+.stats .w { grid-column: span 2; }
+.stats label { display: block; font-size: 11.5px; color: var(--muted); }
+.stats strong { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+.split { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; margin-top: 4px; }
+.split strong { font-size: 18px; }
+.meter { display: flex; height: 8px; border-radius: 8px; overflow: hidden; margin-top: 8px; background: var(--soft); }
+.meter i { background: #6aa4ff; } .meter i + i { background: #94e07a; }
+.emo { font-size: 22px; letter-spacing: 4px; }
+
+/* Outline panel */
+.outline { padding: 18px 16px; height: 100%; overflow: hidden; }
+.outline h3 { font: 400 26px/1.15 var(--serif); letter-spacing: -.01em; }
+.by { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); margin: 10px 0 18px; }
+.by .logo { width: 20px; height: 20px; }
+.outline h4 { font-size: 14px; font-weight: 600; margin: 14px 0 8px; }
+.sk { height: 7px; border-radius: 6px; background: #ececec; margin: 6px 0; }
+.verdict-mini { padding: 20px 18px; height: 100%; display: flex; flex-direction: column; }
+.verdict-mini p { font: 400 19px/1.45 var(--serif); margin: 14px 0 18px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 10; -webkit-box-orient: vertical; }
+.verdict-mini .read { margin-top: auto; }
+.read { align-self: stretch; text-align: center; padding: 12px; border-radius: 10px; background: #111; color: #fff; font-weight: 500; }
+.tapnote { text-align: center; margin: 22px 0 0; font-size: 14px; font-weight: 600; } .tapnote span { display: block; font-size: 18px; }
+
+/* Sections */
+.sec { padding: 110px 0 0; }
+.sec h2 { text-align: center; font-size: clamp(30px, 5vw, 44px); font-weight: 500; letter-spacing: -.025em; }
+.sec .lede { text-align: center; color: var(--muted); margin-top: 10px; }
+.quotes { columns: 3 300px; column-gap: 14px; margin-top: 44px; }
+.q { break-inside: avoid; margin-bottom: 14px; padding: 18px; border-radius: 16px; border: 1px solid #ededed; background: #fff; box-shadow: 0 3px 0 #f0f0f0; }
+.q b { font-size: 15px; } .q p { margin: 8px 0 14px; font-size: 15px; color: #2a2a2a; }
+.q footer { display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: var(--muted); }
+.tag { padding: 3px 9px; border-radius: 999px; background: var(--soft); color: #333; font-weight: 500; }
+.counters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 44px; text-align: center; }
+.counters strong { display: block; font-size: clamp(36px, 7vw, 60px); font-weight: 500; letter-spacing: -.04em; }
+.counters span { color: var(--muted); font-size: 14px; }
+.final { text-align: center; padding: 120px 16px 60px; }
+.foot { border-top: 1px solid #f0f0f0; margin-top: 60px; padding: 30px 0 50px; color: var(--muted); font-size: 13px; }
+.foot .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+
+/* Report view */
+.report { display: none; }
+body.reading .home { display: none; } body.reading .report { display: block; }
+.art { max-width: 680px; margin: 0 auto; padding: 50px 16px 40px; }
+.art .kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.art h1 { font: 400 clamp(34px, 6vw, 50px)/1.08 var(--serif); letter-spacing: -.015em; margin: 14px 0 0; }
+.art .by { margin: 18px 0 26px; font-size: 14px; } .art .by .logo { width: 28px; height: 28px; }
+.art .intro { font: 400 21px/1.5 var(--serif); color: #222; margin-bottom: 30px; }
+.art h2 { font-size: 22px; font-weight: 600; letter-spacing: -.015em; margin: 56px 0 12px; }
+.art h2 small { display: block; font-size: 12px; color: var(--faint); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 6px; }
+.art p { font-size: 17px; line-height: 1.68; color: #262626; margin: 12px 0; }
+.big { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 22px 0; }
+.big div { padding: 14px; border-radius: 14px; background: var(--soft); }
+.big strong { display: block; font-size: 30px; font-weight: 600; letter-spacing: -.03em; } .big span { font-size: 13px; color: var(--muted); }
+.chart { margin: 22px 0 6px; } .chart svg { width: 100%; height: auto; display: block; } .chart figcaption { font-size: 12px; color: var(--faint); margin-top: 6px; }
+.awards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 16px; }
+.award { padding: 16px; border-radius: 14px; border: 1px solid #ededed; box-shadow: 0 3px 0 #f0f0f0; }
+.award .i { font-size: 26px; } .award b { display: block; margin-top: 6px; } .award em { font-style: normal; font-size: 13px; color: var(--blue-d); font-weight: 600; }
+.award p { font-size: 14px !important; line-height: 1.5 !important; color: var(--muted) !important; margin: 6px 0 0 !important; }
+.verdict { margin-top: 56px; padding: 28px 24px; border-radius: 18px; background: #111; color: #f2f2f2; }
+.verdict h2 { margin: 0 0 6px; color: #fff; } .verdict p { color: #dcdcdc; font: 400 19px/1.6 var(--serif); }
+.back { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; padding: 8px 12px; border-radius: 999px; background: var(--soft); }
+
+/* Upload modal */
+.modal { position: fixed; inset: 0; z-index: 60; display: none; place-items: center; padding: 16px; background: rgba(10,10,10,.35); backdrop-filter: blur(4px); }
+.modal.open { display: grid; }
+.sheet { width: min(460px, 100%); max-height: calc(100vh - 32px); overflow: auto; background: #fff; border-radius: 20px; padding: 26px 22px; box-shadow: 0 30px 80px rgba(0,0,0,.25); }
+.sheet h3 { font-size: 22px; font-weight: 600; letter-spacing: -.02em; } .sheet .muted { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.steps { margin: 18px 0; padding-left: 20px; font-size: 14px; color: #333; } .steps li { margin: 6px 0; }
+.drop { display: grid; place-items: center; text-align: center; gap: 6px; padding: 28px 16px; border: 2px dashed #d9d9d9; border-radius: 14px; color: var(--muted); font-size: 14px; transition: background .15s, border-color .15s; }
+.drop.over { background: #f5f9ff; border-color: var(--blue); }
+.drop strong { color: var(--ink); font-size: 15px; }
+.field { display: grid; gap: 6px; margin-top: 14px; font-size: 13px; color: var(--muted); }
+.field input, .field select { font: inherit; font-size: 15px; color: var(--ink); padding: 10px 12px; border: 1px solid #e3e3e3; border-radius: 10px; background: #fff; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.go { width: 100%; margin-top: 18px; height: 46px; border-radius: 10px; background: #111; color: #fff; font-size: 16px; }
+.go:disabled { opacity: .35; cursor: default; }
+.close { float: right; width: 32px; height: 32px; border-radius: 50%; background: var(--soft); font-size: 18px; line-height: 1; }
+.err { color: #c62828; font-size: 13px; margin-top: 10px; }
+.reading-anim { text-align: center; padding: 30px 0 10px; } .reading-anim .logo { width: 64px; height: 64px; margin: 0 auto 14px; animation: bob 1.4s ease-in-out infinite; }
+.priv { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--muted); margin-top: 14px; }
+
+@media (max-width: 640px) {
+  .hero { padding-top: 70px; } .counters { grid-template-columns: 1fr; } .row2 { grid-template-columns: 1fr; }
+  .cluster span { width: 46px; height: 46px; font-size: 21px; margin: 0 -7px; }
+}
+@media (prefers-reduced-motion: reduce) { .row, .cta::before, .cta::after, .cluster span { animation: none; } }
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="#/" aria-label="Home"><span class="logo av"></span></a>
+  <button class="pill" data-try>Try It Now <span aria-hidden="true">→</span></button>
+</div></nav>
+
+<main class="home">
+  <section class="hero">
+    <div class="cluster" aria-hidden="true">
+      <span style="background:#c9f0c4">💍</span><span style="background:#e8f7e4">💬</span><span style="background:#d9d0ff">💔</span>
+      <span class="av" style="background:#5b95f2"></span>
+      <span style="background:#ffe08a">😂</span><span style="background:#ffc9a8">🙈</span><span style="background:#dbe9ff">✈️</span>
+    </div>
+    <h1 class="hl">Upload a chat. Bunty tells you what's really going on.</h1>
+    <p class="sub">Bunty reads every message and writes what he really thinks about everyone in it.</p>
+    <button class="cta" data-try>Try It Now <span aria-hidden="true">→</span></button>
+    <div class="rows" id="rows"></div>
+
+    <div class="stage" id="stage">
+      <div class="bars"><span><b></b></span><span><b></b></span><span><b></b></span><span><b></b></span></div>
+      <div class="screen" id="screen">
+        <div class="panel scan"><div class="count" id="scanCount"></div><div class="feed" id="feed"></div>
+          <div class="scanner"><span class="logo av"></span></div></div>
+        <div class="panel" id="pStats"></div>
+        <div class="panel" id="pOutline"></div>
+        <div class="panel" id="pVerdict"></div>
+      </div>
+      <p class="tapnote"><span>↑</span>Tap another chat</p>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <h2>Lines Bunty underlined</h2>
+    <p class="lede" id="quotesFor"></p>
+    <div class="quotes" id="quotes"></div>
+  </section>
+
+  <section class="sec wrap">
+    <h2>Bunty has been busy</h2>
+    <div class="counters">
+      <div><strong id="cMsgs">0</strong><span>Messages read</span></div>
+      <div><strong id="cDays">0</strong><span>Days of chat covered</span></div>
+      <div><strong id="cReps">0</strong><span>Reports written</span></div>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2 class="hl">Your next chat is next.</h2>
+    <button class="cta" data-try>Try It Now <span aria-hidden="true">→</span></button>
+  </section>
+</main>
+
+<main class="report"><article class="art" id="art"></article></main>
+
+<footer class="foot"><div class="wrap">
+  <span>© 2026 What Bunty Thinks</span>
+  <span>Runs entirely in your browser. Chats are never uploaded anywhere.</span>
+</div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="sheet">
+    <button class="close" id="x" aria-label="Close">×</button>
+    <div id="form">
+      <h3 id="mTitle">Give Bunty a chat</h3>
+      <p class="muted">Export it from WhatsApp, then drop it here.</p>
+      <ol class="steps">
+        <li>Open the chat in WhatsApp, tap the name at the top</li>
+        <li>Choose <b>Export Chat</b> → <b>Without Media</b></li>
+        <li>Save the .zip (or the _chat.txt inside it)</li>
+      </ol>
+      <label class="drop" id="drop">
+        <strong>Drop the .zip or .txt here</strong><span>or click to choose a file</span><span id="fileName" style="color:var(--blue-d)"></span>
+        <input type="file" id="file" accept=".zip,.txt,text/plain,application/zip" hidden>
+      </label>
+      <div id="who" hidden>
+        <div class="row2">
+          <label class="field">Chat name<input id="label" maxlength="40"></label>
+          <label class="field">They are your…<select id="tag"><option>Partner</option><option>Friend</option><option>Family</option><option>Group</option><option>Crush</option><option>Ex</option><option>Coworker</option></select></label>
+        </div>
+        <label class="field">Which one is you?<select id="me"></select></label>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <button class="go" id="gen" disabled>Ask Bunty →</button>
+      <p class="priv">🔒 Your chat is read on this device only. Reports are saved in this browser so you can reopen them.</p>
+    </div>
+    <div class="reading-anim" id="reading" hidden><span class="logo av"></span><b id="readingCount"></b><p class="muted">Bunty is reading between the lines.</p></div>
+  </div>
+</div>
+
+<script>window.PRELOADED = [{"id":"muskan","label":"Muskan","emoji":"💍","tag":"Wife","app":"WhatsApp","me":"Nissar Behera","names":{"Nissar Behera":"Nissar","Muskan":"Muskan"},"title":"320 Calls, 108 Momiyos and a Chai on the Balcony","intro":"I read all 7,487 messages between Nissar and Muskan, from 21 February 2025 to 24 October 2026. Take out the OTPs, the Swiggy vouchers and the 1,092 photos, and what remains is two people trying to build a life in Bangalore while their jobs do their best to stop them. Here is what I think.","preview":[["Muskan","Sorry, I don't want to trouble you with my never ending rant","15:39"],["Nissar","Who would you","15:39"],["Nissar","I am your all","15:39"],["Nissar","You are my all","15:39"],["Nissar","♥️","15:40"],["Muskan","I wanna grow old with you and have chai in the balcony","15:40"],["Nissar","Green fardee","15:40"],["Nissar","*garden","15:40"],["Muskan","Kasavanahalli isn't nice without you","17:06"],["Nissar","Missing you Momo","20:01"],["Muskan","It's so lonely without you","20:58"],["Muskan","Please jaldi aa jao","20:58"],["Nissar","On my way!","21:21"]],"chapters":[{"h":"Who texts first, and who pretends not to care","blocks":[{"p":"Muskan starts 63% of your conversations. When Nissar texts, she replies in a median of 40 seconds. He takes about three minutes, which sounds fine until you see where those minutes go."},{"big":[["320","calls Muskan placed"],["264","show up as missed"],["16","\"In a meeting, will call you back\""]]},{"p":"Each of you has a reflex. His is that auto-reply. Hers is \"Kab tak aaoge?\" (when are you coming home?), sent 14 times, along with a dozen versions of \"call me when you're free\": \"Free hokr call karna\", \"Call na\", \"Call krun?\"."},{"p":"This isn't a one-sided chat, though. Nissar doesn't write paragraphs. He writes names: \"Momiyo\" 108 times, \"Momo\" 61, \"Boo\" 51, and then Bobo, Moumou, Chottu, Potto rani, Crayyo and Sundrooo. Sometimes he sends her name three times in a row, like he's knocking on a door:"},{"chat":[["Nissar","Momiyo","12:34"],["Nissar","Momiyo","12:34"],["Nissar","Momiyo","12:34"],["Muskan","Call krun!?","12:34"]]},{"p":"He has also sent 539 stickers to her 36. His love language is attention in tiny packets. Hers is words: she has said \"I love you\" 34 times to his 15, and \"missing you\" 20 times to his 5. Neither of you is cold. You pay in different currencies, and sometimes each of you checks the balance in the wrong one."}]},{"h":"The weekend he was at sea","blocks":[{"p":"Your busiest day ever was 6 April 2025, with 115 messages. Nissar was on a work cruise between Goa and Mumbai with almost no network. Muskan was alone in Bangalore, with Ram Navami loudspeakers outside and a job she hated."},{"chat":[["Muskan","Neend nhi aati akele","00:41"],["Muskan","Need you","00:42"],["Nissar","Moon is looking so pretty","00:46"],["Nissar","But not many stars","00:46"],["Nissar","I played in casino","00:46"],["Nissar","Lost 2.5K","00:46"],["Nissar","🥹","00:46"]]},{"p":"The next afternoon:"},{"chat":[["Muskan","Sorry, I don't want to trouble you with my never ending rant","15:39"],["Nissar","Who would you","15:39"],["Nissar","I am your all","15:39"],["Nissar","You are my all","15:39"],["Muskan","I wanna grow old with you and have chai in the balcony","15:40"],["Nissar","Green fardee","15:40"],["Nissar","*garden","15:40"]]},{"p":"Those few lines hold the whole relationship. She apologises for needing him. He tells her that needing him is the point. She describes the future, and his keyboard turns it into a garden. Keep that screenshot."}]},{"h":"The job that ate 2025","blocks":[{"p":"If this chat has a villain, it isn't either of you. It's Muskan's job. It turns up in April (\"I can't live this miserable life… I am so sorry to let you down\"), again in May (\"Please help kr do and job se bahr nikal wa do. I will be forever in your debt\"), and again in July:"},{"chat":[["Muskan","Should I consider a therapist?","08:54"],["Muskan","I don't want to burden you with my negativity","08:55"],["Nissar","Action would negate negativity","08:57"],["Muskan","Yes, but kya action lun. Direction hi nhi hai.","08:57"],["Nissar","Mujhe bhi nhi pata","09:54"],["Nissar","Step by steps lena padega","09:54"],["Muskan","Hmm. Health se shuru krein?","10:14"]]},{"p":"\"Mujhe bhi nhi pata\" (I don't know either) isn't a failure. It's one of the most honest lines he sends all year, because he was in his own fog at the time. In June 2025 he finally said so:"},{"chat":[["Nissar","I am somewhat panicking and I don't want to show this","15:14"],["Nissar","I don't want to make you anxious as well","15:15"],["Nissar","Hence have been in mental limbo","15:15"],["Muskan","It's okay to be uncertain. I just want to be part of your life.","15:21"],["Muskan","Good and bad both. We are partners in everything.","15:22"]]},{"p":"Remember that line from Muskan. It comes back later, in a much worse mood."},{"p":"This part of the story ends well. On 2 February 2026 she writes \"Bol diya resign\" (I've resigned). Nissar: \"Congratulations Momiyo. To newer and greater heights.\" Muskan: \"I have to make it work.\" Nissar: \"We will.\" Two words, and the right pronoun."}]},{"h":"2026: his turn","blocks":[{"p":"In 2026 the roles swap. His Jakarta job ends (\"kabhi fire nhi hua, but it's ok\"), and Muskan, who spent 2025 asking to be rescued, becomes the one doing the rescuing:"},{"chat":[["Muskan","But this is the moment for you to reflect","18:04"],["Muskan","Ajaib hi aata to kya krte? What did you wanna do?? Abhi vo kro.","18:07"],["Nissar","yes Momiyo","18:10"]]},{"p":"The night before his new job starts:"},{"chat":[["Nissar","weird sa lg rha","23:58"],["Nissar","to start a job","23:58"],["Muskan","One day at a time","23:59"],["Muskan","You can always leave it","23:59"],["Muskan","Breathe in and out","23:59"],["Muskan","You are just exploring","23:59"]]},{"p":"A week later, unprompted: \"I married this hardworking guy 💛 So don't call yourself lazy.\" Nissar, that is your wife's character reference. Frame it."}]},{"h":"The fight you keep having","blocks":[{"p":"You don't fight often. When you do, it's the same fight in different clothes. In November 2025 it was a phone number saved in Jakarta: \"I trust you. Please share everything with me. I cannot live an insecure life.\" In June 2026 it was memory: \"You behave that i am mad and i forget everything.\" On your third anniversary it was this:"},{"chat":[["Muskan","3rd anniversary felt like 30th","01:02"],["Nissar","We will have for real once we meet","01:02"],["Muskan","It's not about that. Tumne to mujhe theek se baat bhi nhi ki","01:03"],["Nissar","Muskan itna kaam chala h","01:03"],["Nissar","Already frustrated hoon","01:03"],["Muskan","All I want to say, I don't feel like part of your life. You don't share stuff.","01:10"],["Nissar","You are all I have","01:11"],["Nissar","I am sorry aaj I couldn't make it anything special","01:11"]]},{"p":"Muskan isn't asking for more attention. She's asking to be let in. \"Partners in everything\" was her line in June 2025. When Nissar is stressed, he goes quiet to keep her out of the mess (\"I don't want to make you anxious as well\"). To him that is care. To her it looks like a locked door. Nissar, when you're drowning, say so out loud, even badly. Two lines like \"investor cancelled, I'm fried, love you\" would have saved that anniversary."},{"p":"Muskan, you apologise for existing far more than you need to. \"Sorry I keep troubling you.\" \"Sorry I bring negativity in your life.\" \"Bear my crazy. Please.\" You have said sorry 20 times and he has said it 18. That is the most balanced number in this whole chat, so stop acting like you owe him."}]},{"h":"Who used ChatGPT to say sorry","blocks":[{"p":"A lighter one. On 5 May 2025, after a scene at a restaurant, Muskan sent a beautifully composed apology, em dashes and all. A few seconds later she added: \"chatGPT ne likha\" (ChatGPT wrote it). Respect for the honesty."},{"p":"Nine months later, Nissar sent an apology so polished that she checked:"},{"chat":[["Nissar","You are definitely on the right path, please don't worry or fret, I misspoke.","09:46"],["Nissar","I want us to build together.","09:46"],["Nissar","The life and freedom we desire and deserve","09:46"],["Muskan","Thank you baby","09:54"],["Muskan","I am sorry I reacted so emotionally","09:54"],["Muskan","Chatgpt hai na ye?","11:10"],["Nissar","Lol no","11:11"]]},{"p":"I believe him. Mostly."}]},{"h":"The question she keeps asking","blocks":[{"p":"Muskan has brought up children five times in 18 months, each time in a different mood. May 2025: \"how do we decide to have a child. War. Diseases. Uncertainty.\" November 2025: \"Let's have kids. FOMO hoga i think.\" December 2025: \"I think it is important to have children. But fir dar lagta hai, world is sooo cruel.\" April 2026: a veg-or-non-veg question about a hypothetical kid. September 2026: \"Let's have children 🥺😶‍🌫️🫠\"."},{"p":"Nissar's replies on record are \"Ooo\", \"Ok bobo\" and silence. I'm not saying the answer is yes or no. I'm saying this one needs a sofa, not WhatsApp, and it has been waiting in the hallway for a year and a half."}]},{"h":"When you two actually talk","blocks":[{"chart":"months"},{"p":"Your chat gets loudest when Nissar is away: April 2025 (the cruise and Hyderabad), December 2025 (Jakarta), May 2026. You text most when you're apart, which is how it should be. Your longest silence lasted 3.7 days, from 25 to 29 July 2026, and it started right after Muskan came home from three weeks away. That isn't silence. That's being in the same room."},{"chart":"hours"},{"p":"Your hour is 3 PM, the post-lunch slump when Muskan asks \"How is it going?\" and Nissar answers \"Calls\"."}]}],"awards":[{"icon":"📞","title":"Most likely to call","who":"Muskan","why":"320 calls placed, 264 of them logged as missed. She still worries about being \"the nosy wife\"."},{"icon":"🏷️","title":"Nickname factory","who":"Nissar","why":"Momiyo ×108, Momo ×61, Boo ×51, plus Bobo, Moumou, Chottu, Potto rani, Crayyo and Sundrooo."},{"icon":"🧩","title":"Sticker king","who":"Nissar","why":"539 stickers to her 36. Some are custom Momo stickers he made himself."},{"icon":"🏠","title":"Minister of Logistics","who":"Muskan","why":"\"Kab tak aaoge?\", \"Dinner?\", and the pre-trip shutdown list: purifier off, gas off, windows closed, main door locked."},{"icon":"✈️","title":"Frequent flyer","who":"Nissar","why":"\"Landed\", \"Taking off\" or \"Boarded\" 24 times: Jakarta, Singapore, Delhi, and Goa by sea."},{"icon":"🔐","title":"OTP courier","who":"Muskan","why":"He asks \"Otp dedo\" about ten times. Once she demanded a code word. He said \"Pineapple\"."},{"icon":"🤝","title":"Sorry parity","who":"Both","why":"20 sorries from her, 18 from him. The most balanced stat in the chat."},{"icon":"😶‍🌫️","title":"Mood in one emoji","who":"Muskan","why":"😶‍🌫️, 15 times, all hers. It means \"I'm fine\". It never means \"I'm fine\"."}],"quotes":[{"who":"Nissar","x":"My colleagues are like, your wife is so pretty. I replied \"yes, I have been very lucky\"","date":"Jun 2025","tag":"💍 Bragging"},{"who":"Muskan","x":"I wanna grow old with you and have chai in the balcony","date":"Apr 2025","tag":"☕ The plan"},{"who":"Nissar","x":"I want to kiss you all the way from 11.59PM on 31st Dec 2026 to 12.01AM on 1st Jan 2026","date":"Dec 2025","tag":"🎆 New Year"},{"who":"Muskan","x":"I married this hardworking guy 💛 So don't call yourself lazy.","date":"Jul 2026","tag":"💪 Backup"},{"who":"Muskan","x":"It's okay to be uncertain. I just want to be part of your life. Good and bad both. We are partners in everything.","date":"Jun 2025","tag":"🤝 The ask"},{"who":"Nissar","x":"Momo, you are the Goat","date":"Feb 2026","tag":"🐐 Horoscope"},{"who":"Muskan","x":"You are not the same nissar anymore. You are mine","date":"Apr 2026","tag":"🔒 Claimed"},{"who":"Nissar","x":"Amazing to be speaking with you from so many miles in the air","date":"Dec 2025","tag":"✈️ In-flight WiFi"},{"who":"Muskan","x":"I don't want to be the nosy wife and keep calling 🐣😂","date":"Sep 2025","tag":"📞 Self-aware"},{"who":"Nissar","x":"We are better and stronger together","date":"Jul 2026","tag":"🌱 Repair"}],"verdict":{"h":"Verdict","p":["Here is what I think. You two are not running out of love. It shows up everywhere: in 108 Momiyos, in \"Tracking you\" answered with \"StalkMomo\", in a kiss timed from 11:59 to 12:01, in him telling his colleagues he has been very lucky. What you're running out of is bandwidth. Two career resets in two years, a city that loses your evenings to traffic, and a gut that keeps staging coups (her \"Jhada\" bulletins deserve their own genre).","The pattern to break is this: Nissar goes quiet to protect her, Muskan reads the quiet as being shut out, and then she apologises for asking. The fix is that he says what's going on, even clumsily, and she asks without the sorry.","The last line in this export is Muskan's: \"This is over between us! Take care.\" It came an hour after a 45-second call and two days after a grocery list that ended \"Maga dijiye\". I can't hear tone in text, and on WhatsApp neither can you. Whatever it was, this chat has one remedy that has worked every single time, and she has typed some version of it 14 times: Ghar aa jao. Go home."]},"stats":{"total":7487,"perDay":12,"spanDays":611,"activeDays":538,"from":"2025-02-21","to":"2026-10-24","people":[{"name":"Muskan","n":4001,"share":53,"first":63,"reply":"40 sec","replySec":40,"night":168,"words":16037,"emoji":["😂","😘","😶‍🌫️","🙄","🥺","💛"],"stickers":36,"photos":643,"voice":7,"callsPlaced":320,"callsMissed":264,"love":34,"sorry":20,"miss":20,"signature":[]},{"name":"Nissar Behera","n":3486,"share":47,"first":37,"reply":"3 min","replySec":183,"night":190,"words":9626,"emoji":["❤️","♥️","😶","☺️","💩","🙂"],"stickers":539,"photos":449,"voice":4,"callsPlaced":35,"callsMissed":0,"love":15,"sorry":18,"miss":5,"signature":[]}],"afterMidnight":5,"busiestHour":15,"hours":[253,84,5,6,10,8,34,83,288,411,337,442,539,391,481,694,563,434,570,464,357,362,340,331],"months":[["2025-02",49],["2025-03",277],["2025-04",705],["2025-05",224],["2025-06",237],["2025-07",405],["2025-08",389],["2025-09",248],["2025-10",307],["2025-11",499],["2025-12",614],["2026-01",246],["2026-02",387],["2026-03",462],["2026-04",470],["2026-05",527],["2026-06",332],["2026-07",433],["2026-08",189],["2026-09",340],["2026-10",147]],"busiestDay":{"day":"2025-04-06","n":115},"voice":11,"topEmoji":["😂","😘","❤️"],"silence":{"days":3.7,"from":"2026-07-25","to":"2026-07-29","resumedBy":"Nissar Behera"}}}];</script>
+<script>/* Chat analyzer: parses WhatsApp exports (iOS + Android) and computes report stats.
+   Runs in the browser (window.Analyzer) and in Node (module.exports). */
+(function (root) {
+  const IOS = /^\[(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4}),?\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*([AaPp]\.?\s?[Mm]\.?)?\]\s(.+?):\s([\s\S]*)$/;
+  const AND = /^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4}),?\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*([AaPp]\.?\s?[Mm]\.?)?\s[-–]\s(.+?):\s([\s\S]*)$/;
+  // Whole emoji sequences (ZWJ joins, skin tones), so 😶‍🌫️ counts as one emoji, not two.
+  const EMOJI = /\p{Extended_Pictographic}️?[\u{1F3FB}-\u{1F3FF}]?(?:‍\p{Extended_Pictographic}️?)*/gu;
+  const emojiKey = e => {
+    const k = e.replace(/️/g, '');
+    if ([...k].length > 1) return e; // ZWJ sequences keep their own variation selectors
+    return k.codePointAt(0) < 0x2800 ? k + '️' : k;
+  };
+  const STOP = new Set(('the a an i to you is it and of in me my for that this on be are was have do not no ok okay so what will with at but ' +
+    'h hai ho ki ka ke ko se mai main bhi na ne kya ye yeh wo vo nhi nahi he hu hun ek kr kar rha rhi tha thi the ' +
+    'just can how all your from like get got its it\'s are was were has had did does been being they them we our us ' +
+    'omitted image sticker audio video document gif call voice missed click back https http www com').split(' '));
+
+  function clean(s) { return s.replace(/[‎‏‪-‮⁦-⁩]/g, '').replace(/[  ]/g, ' '); }
+
+  function parse(text) {
+    const lines = clean(text).split(/\r?\n/);
+    const raw = [];
+    for (const line of lines) {
+      const m = line.match(IOS) || line.match(AND);
+      if (m) raw.push({ f: m.slice(1, 8), a: m[8].trim(), x: m[9] });
+      else if (raw.length) raw[raw.length - 1].x += '\n' + line;
+    }
+    // Day/month order: if any first field > 12 it's D/M, if any second field > 12 it's M/D.
+    let dmy = true;
+    if (!raw.some(r => +r.f[0] > 12) && raw.some(r => +r.f[1] > 12)) dmy = false;
+    return raw.map(r => {
+      let [d, mo, y, h, mi, s, ap] = r.f;
+      if (!dmy) [d, mo] = [mo, d];
+      y = +y < 100 ? 2000 + +y : +y;
+      h = +h;
+      if (ap) { const pm = /p/i.test(ap); h = (h % 12) + (pm ? 12 : 0); }
+      return { t: new Date(y, +mo - 1, +d, h, +mi, +(s || 0)).getTime(), a: r.a, x: r.x.trim() };
+    }).filter(m => !isNaN(m.t) && !/end-to-end encrypted|created group|added you|changed the subject/i.test(m.x));
+  }
+
+  function kind(x) {
+    if (/sticker omitted|STK-.*\.webp/i.test(x)) return 'sticker';
+    if (/audio omitted|PTT-|\.opus|voice message/i.test(x)) return 'voice';
+    if (/GIF omitted/i.test(x)) return 'gif';
+    if (/video omitted|VID-.*\.mp4/i.test(x)) return 'video';
+    if (/image omitted|IMG-.*\.(jpe?g|png)|<Media omitted>/i.test(x)) return 'image';
+    if (/document omitted|\.pdf \(file attached\)/i.test(x)) return 'doc';
+    if (/^Missed (voice|video|group) call/i.test(x)) return 'missed';
+    if (/^(Voice|Video) call|^Group call/i.test(x)) return 'call';
+    if (/This message was deleted|You deleted this message/i.test(x)) return 'deleted';
+    return 'text';
+  }
+
+  function fmtDur(sec) {
+    if (sec < 60) return Math.round(sec) + ' sec';
+    if (sec < 3600) return Math.round(sec / 60) + ' min';
+    const h = Math.floor(sec / 3600), m = Math.round((sec % 3600) / 60);
+    return h + ' h ' + String(m).padStart(2, '0');
+  }
+  const median = a => { if (!a.length) return 0; const s = [...a].sort((p, q) => p - q); return s[Math.floor(s.length / 2)]; };
+  const pct = (n, d) => d ? Math.round(100 * n / d) : 0;
+  const top = (obj, n) => Object.entries(obj).sort((p, q) => q[1] - p[1]).slice(0, n);
+  const ymd = t => { const d = new Date(t); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  const ym = t => ymd(t).slice(0, 7);
+  const count = (msgs, who, re) => msgs.filter(m => m.a === who && m.k === 'text' && re.test(m.x)).length;
+
+  function analyze(msgs) {
+    msgs.forEach(m => { m.k = kind(m.x); });
+    const byWho = {};
+    msgs.forEach(m => { byWho[m.a] = (byWho[m.a] || 0) + 1; });
+    const people = top(byWho, 12).map(([a]) => a);
+    const P = {};
+    people.forEach(a => { P[a] = { n: byWho[a], first: 0, replies: [], night: 0, words: 0, emoji: {}, kinds: {}, vocab: {} }; });
+
+    const GAP = 6 * 3600e3;
+    let silence = { d: 0, from: 0, to: 0, resumedBy: '' };
+    const hours = Array(24).fill(0), months = {}, days = {};
+    msgs.forEach((m, i) => {
+      const p = P[m.a]; if (!p) return;
+      const prev = msgs[i - 1];
+      if (!prev || m.t - prev.t >= GAP) p.first++;
+      if (prev && prev.a !== m.a && m.t - prev.t < 12 * 3600e3 && m.t >= prev.t) p.replies.push((m.t - prev.t) / 1000);
+      if (prev && m.t - prev.t > silence.d) silence = { d: m.t - prev.t, from: prev.t, to: m.t, resumedBy: m.a };
+      const hr = new Date(m.t).getHours();
+      hours[hr]++;
+      if (hr < 5) p.night++;
+      months[ym(m.t)] = (months[ym(m.t)] || 0) + 1;
+      days[ymd(m.t)] = (days[ymd(m.t)] || 0) + 1;
+      p.kinds[m.k] = (p.kinds[m.k] || 0) + 1;
+      if (m.k === 'text') {
+        p.words += m.x.split(/\s+/).length;
+        (m.x.match(EMOJI) || []).map(emojiKey).forEach(e => { p.emoji[e] = (p.emoji[e] || 0) + 1; });
+        if (!/https?:\/\//.test(m.x)) (m.x.toLowerCase().match(/[a-z][a-z']{2,}/g) || []).forEach(w => {
+          if (!STOP.has(w)) p.vocab[w] = (p.vocab[w] || 0) + 1;
+        });
+      }
+    });
+
+    // Fill month gaps so charts read as a continuous timeline.
+    const first = msgs[0].t, last = msgs[msgs.length - 1].t;
+    const series = [];
+    for (let d = new Date(new Date(first).getFullYear(), new Date(first).getMonth(), 1); d.getTime() <= last; d.setMonth(d.getMonth() + 1)) {
+      const k = ym(d.getTime()); series.push([k, months[k] || 0]);
+    }
+    const spanDays = Math.max(1, Math.round((last - first) / 864e5));
+    const allEmoji = {};
+    people.forEach(a => Object.entries(P[a].emoji).forEach(([e, n]) => { allEmoji[e] = (allEmoji[e] || 0) + n; }));
+    const firsts = people.reduce((s, a) => s + P[a].first, 0);
+    const nights = people.reduce((s, a) => s + P[a].night, 0);
+    const busiestHour = hours.indexOf(Math.max(...hours));
+    const busiestDay = top(days, 1)[0];
+
+    const per = people.map(a => {
+      const p = P[a];
+      const others = people.filter(b => b !== a);
+      // Signature words: things this person says that the others almost never do.
+      const sig = top(p.vocab, 400).filter(([w, n]) => n >= 6 && others.every(b => (P[b].vocab[w] || 0) * 6 < n)).slice(0, 8);
+      return {
+        name: a, n: p.n, share: pct(p.n, msgs.length), first: pct(p.first, firsts),
+        reply: fmtDur(median(p.replies)), replySec: median(p.replies), night: p.night,
+        words: p.words, emoji: top(p.emoji, 6).map(e => e[0]),
+        stickers: p.kinds.sticker || 0, photos: p.kinds.image || 0, voice: p.kinds.voice || 0,
+        callsPlaced: (p.kinds.call || 0) + (p.kinds.missed || 0), callsMissed: p.kinds.missed || 0,
+        love: count(msgs, a, /love you|i love/i), sorry: count(msgs, a, /sorry/i),
+        miss: count(msgs, a, /miss(ing)? you|miss ho/i), signature: sig.map(([w, n]) => [w, n])
+      };
+    });
+
+    return {
+      total: msgs.length, perDay: Math.round(msgs.length / spanDays), spanDays,
+      activeDays: Object.keys(days).length, from: ymd(first), to: ymd(last),
+      people: per, afterMidnight: pct(nights, msgs.length),
+      busiestHour, hours, months: series,
+      busiestDay: busiestDay ? { day: busiestDay[0], n: busiestDay[1] } : null,
+      voice: per.reduce((s, p) => s + p.voice, 0), topEmoji: top(allEmoji, 3).map(e => e[0]),
+      silence: { days: +(silence.d / 864e5).toFixed(1), from: ymd(silence.from), to: ymd(silence.to), resumedBy: silence.resumedBy }
+    };
+  }
+
+  const api = { parse, analyze, kind, fmtDur };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.Analyzer = api;
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+<script>/* Auto-writer: turns analyzer stats + messages into a Bunty-style report for any uploaded chat.
+   Rule-based, runs fully in the browser. */
+(function (root) {
+  const first = n => n.split(' ')[0];
+  const hh = h => ((h % 12) || 12) + (h < 12 ? ' AM' : ' PM');
+  const mon = k => new Date(k + '-01T00:00').toLocaleString('en', { month: 'long', year: 'numeric' });
+  const day = k => new Date(k + 'T00:00').toLocaleString('en', { day: 'numeric', month: 'long', year: 'numeric' });
+  const time = t => new Date(t).toTimeString().slice(0, 5);
+  const ymd = t => { const d = new Date(t); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  const isText = m => m.k === 'text' && m.x.length > 1 && m.x.length < 160 && !/https?:|omitted|\d{5,}/.test(m.x);
+  const fmt = n => n.toLocaleString('en');
+
+  function write(msgs, s, opts) {
+    const ppl = s.people.slice(0, 2);
+    const [A, B] = ppl;
+    const name = p => (p ? first(p.name) : 'Someone');
+    const group = s.people.length > 2;
+    const lead = [...s.people].sort((p, q) => q.first - p.first)[0];
+    const fast = [...s.people].sort((p, q) => p.replySec - q.replySec)[0];
+    const slow = [...s.people].sort((p, q) => q.replySec - p.replySec)[0];
+    const names = Object.fromEntries(s.people.map(p => [p.name, first(p.name)]));
+    const say = (m) => [names[m.a] || first(m.a), m.x, time(m.t)];
+
+    // Busiest-day excerpt and the messages that broke the longest silence.
+    const busy = s.busiestDay ? msgs.filter(m => isText(m) && ymd(m.t) === s.busiestDay.day) : [];
+    const busyBits = busy.slice(Math.max(0, Math.floor(busy.length / 2) - 3)).slice(0, 7).map(say);
+    const breakIdx = msgs.findIndex(m => ymd(m.t) >= s.silence.to);
+    const breakBits = msgs.slice(Math.max(0, breakIdx), breakIdx + 12).filter(isText).slice(0, 4).map(say);
+
+    // Peak month and the steepest drop: "the week it changed".
+    const ms = s.months;
+    const peak = ms.reduce((b, m) => (m[1] > b[1] ? m : b), ms[0]);
+    let drop = null;
+    for (let i = 3; i < ms.length - 1; i++) {
+      const avg = (ms[i - 1][1] + ms[i - 2][1] + ms[i - 3][1]) / 3;
+      const d = avg ? (avg - ms[i][1]) / avg : 0;
+      if (!drop || d > drop.d) drop = { d, k: ms[i][0], avg: Math.round(avg), n: ms[i][1] };
+    }
+
+    const preview = msgs.filter(isText).slice(-60).slice(-13).map(say);
+    const talker = [...s.people].sort((p, q) => q.share - p.share)[0];
+    const lover = [...s.people].sort((p, q) => q.love - p.love)[0];
+    const sticky = [...s.people].sort((p, q) => q.stickers - p.stickers)[0];
+    const sorry = [...s.people].sort((p, q) => q.sorry - p.sorry)[0];
+    const owl = [...s.people].sort((p, q) => q.night - p.night)[0];
+    const caller = [...s.people].sort((p, q) => q.callsPlaced - p.callsPlaced)[0];
+
+    const chapters = [
+      { h: 'Who texts first, and who pretends not to care', blocks: [
+        { p: `${name(lead)} starts ${lead.first}% of your conversations. ${group ? 'The rest of the group' : name(lead === A ? B : A)} mostly waits to be asked. ` +
+          `${name(fast)} replies in a median of ${fast.reply}${slow !== fast ? `; ${name(slow)} takes ${slow.reply}` : ''}.` },
+        { big: [[fmt(s.total), 'messages'], [lead.first + '%', `conversations started by ${name(lead)}`], [fast.reply, `${name(fast)}'s median reply`]] },
+        { p: `${name(talker)} does ${talker.share}% of the talking.` + (A && B && Math.abs(A.share - B.share) < 8 ? ' That is about as even as chats get.' : ' Someone is carrying this conversation, and you both know who.') }
+      ] },
+      { h: 'The day you couldn\'t stop texting', blocks: [
+        { p: s.busiestDay ? `Your busiest day was ${day(s.busiestDay.day)}, with ${s.busiestDay.n} messages. Here is a slice of it:` : 'No day stands out. You keep a steady rhythm.' },
+        busyBits.length ? { chat: busyBits } : { p: '' }
+      ] },
+      { h: 'The month it changed', blocks: [
+        { chart: 'months' },
+        { p: `Your peak was ${mon(peak[0])}, with ${fmt(peak[1])} messages.` + (drop && drop.d > 0.35 ? ` The sharpest drop came in ${mon(drop.k)}, when you went from about ${drop.avg} a month to ${drop.n}. Something shifted there. Scroll back to it.` : ' There is no dramatic cliff in this chat, just the normal tides.') }
+      ] },
+      { h: 'The longest silence', blocks: [
+        { p: `${s.silence.days} days, from ${day(s.silence.from)} to ${day(s.silence.to)}. ${first(s.silence.resumedBy)} broke it.` + (breakBits.length ? ' This is how:' : '') },
+        breakBits.length ? { chat: breakBits } : { p: '' }
+      ] },
+      { h: 'How you say it', blocks: [
+        { chart: 'hours' },
+        { p: `You talk most around ${hh(s.busiestHour)}. ${s.afterMidnight}% of your messages are sent after midnight, mostly by ${name(owl)}. ` +
+          s.people.slice(0, 4).map(p => `${name(p)}: ${p.love} "love you"s, ${p.sorry} sorries, ${p.stickers} stickers, favourite emoji ${p.emoji[0] || 'none'}.`).join(' ') }
+      ] }
+    ];
+
+    const awards = [
+      { icon: '🚀', title: 'Texts first', who: name(lead), why: `Starts ${lead.first}% of conversations.` },
+      { icon: '⚡', title: 'Fastest thumbs', who: name(fast), why: `Median reply time: ${fast.reply}.` },
+      { icon: '🦉', title: 'Night owl', who: name(owl), why: `${owl.night} messages between midnight and 5 AM.` },
+      { icon: '❤️', title: 'Says it most', who: name(lover), why: `${lover.love} "love you"s.` },
+      { icon: '🧩', title: 'Sticker person', who: name(sticky), why: `${sticky.stickers} stickers sent.` },
+      { icon: '🙏', title: 'Apologizer-in-chief', who: name(sorry), why: `${sorry.sorry} sorries.` },
+      { icon: '📞', title: 'Most likely to call', who: name(caller), why: `${caller.callsPlaced} calls placed.` }
+    ].filter(a => !/: 0\b|^0 /.test(a.why) && !/\b0 (stickers|sorries|calls|"love)/.test(a.why));
+
+    const quotes = msgs.filter(m => isText(m) && m.x.length > 25 && /love|miss|sorry|proud|happy|thank|together|always/i.test(m.x))
+      .filter((m, i, a) => i % Math.max(1, Math.floor(a.length / 10)) === 0).slice(0, 10)
+      .map(m => ({ who: names[m.a] || first(m.a), x: m.x, date: new Date(m.t).toLocaleString('en', { month: 'short', year: 'numeric' }), tag: /sorry/i.test(m.x) ? '🙏 Sorry' : /miss/i.test(m.x) ? '🥺 Missing' : '❤️ Soft' }));
+
+    const balance = A && B ? Math.abs(A.first - B.first) : 0;
+    const verdict = { h: 'Verdict', p: [
+      balance > 25 ? `This chat leans. ${name(lead)} reaches out ${lead.first}% of the time, and that is a lot of knocking on one door. If you are ${name(lead === A ? B : A)}, go first next time. It costs nothing and it will be noticed.`
+        : 'This chat is balanced. You both reach out, you both show up, and nobody is keeping score. That is rarer than you think.',
+      `${fmt(s.total)} messages over ${s.spanDays} days, ${s.activeDays} of which you actually talked. Whatever you are to each other, you keep coming back. Do it in person once in a while.`
+    ] };
+
+    return {
+      id: 'u' + Date.now(), label: opts.label || (group ? 'Group chat' : name(B || A)), emoji: opts.emoji || '💬', tag: opts.tag || 'Chat', app: 'WhatsApp',
+      me: opts.me || (A && A.name), names, title: group ? `${s.people.length} People, ${fmt(s.total)} Messages and One Group Chat` :
+        `${name(lead)} Texts First, ${fmt(s.total)} Messages and a ${s.silence.days}-Day Silence`,
+      intro: `I read all ${fmt(s.total)} messages, from ${day(s.from)} to ${day(s.to)}. Here is what I think.`,
+      preview, chapters, awards, quotes, verdict, stats: s
+    };
+  }
+
+  const api = { write };
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+  else root.Writer = api;
+})(typeof window !== 'undefined' ? window : globalThis);
+</script>
+<script>/* What Bunty Thinks — private edition. Landing page, demo story, report view, uploads. */
+(function () {
+  const $ = (s, el = document) => el.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const fmt = n => Number(n).toLocaleString('en');
+  const hh = h => ((h % 12) || 12) + ' ' + (h < 12 ? 'AM' : 'PM');
+  const STORE = 'bunty.reports.v1';
+
+  const AVATAR = '<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#5b95f2"/>' +
+    '<path d="M14 64c2-12 9-17 18-17s16 5 18 17z" fill="#2c3e64"/><ellipse cx="32" cy="35" rx="13" ry="15" fill="#e9b48a"/>' +
+    '<path d="M19 25h26l3 4H16z" fill="#f4efe4"/><path d="M22 25c1-9 5-12 10-12s9 3 10 12z" fill="#f4efe4"/><rect x="22" y="22" width="20" height="3.5" fill="#1d1d1d"/>' +
+    '<rect x="21" y="31" width="9.5" height="6" rx="2.5" fill="#151515"/><rect x="33.5" y="31" width="9.5" height="6" rx="2.5" fill="#151515"/><rect x="29.5" y="32.5" width="5" height="1.6" fill="#151515"/>' +
+    '<path d="M25 43c3-2.5 11-2.5 14 0-2 1.6-4 1-7 .4-3 .6-5 1.2-7-.4z" fill="#4a2c1a"/></svg>';
+  document.querySelectorAll('.av').forEach(el => { el.innerHTML = AVATAR; });
+
+  // Reports: the preloaded one plus anything uploaded in this browser.
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(STORE) || '[]'); } catch (e) { saved = []; }
+  let REPORTS = [...(window.PRELOADED || []), ...saved];
+  const persist = () => { try { localStorage.setItem(STORE, JSON.stringify(REPORTS.filter(r => r.uploaded))); } catch (e) { /* private mode: keep in memory */ } };
+
+  const PLACEHOLDERS = [['The Boys', '🍻', '#ffd9c2'], ['Family', '❤️', '#ffe08a'], ['Bestie', '💖', '#ffd1e8'], ['Mom', '🏡', '#d5f5d0'],
+    ['Uni crew', '🎓', '#ddd6ff'], ['Work wife', '💼', '#d3e7ff'], ['Him', '🙄', '#e3e3ff'], ['Situationship', '🌀', '#e0f2ff'],
+    ['Group trip', '🌴', '#d5f5d0'], ['Cousins', '🎄', '#ffd9d9'], ['Crush', '👀', '#ffeaa6'], ['Ex', '🚩', '#ffd9d9']];
+
+  /* ---------- shared renderers ---------- */
+  const meOf = r => r.names[r.me] || r.me;
+  function bubbles(r, list) {
+    const me = meOf(r);
+    // Like WhatsApp, label the sender only on the first bubble of a run.
+    return list.map(([who, x, t], i) => `<div class="b ${who === me ? 'me' : 'them'}">${who === me || (list[i - 1] && list[i - 1][0] === who) ? '' : `<small>${esc(who)}</small>`}${esc(x)}<time>${esc(t || '')}</time></div>`).join('');
+  }
+  function statsHTML(r) {
+    const s = r.stats, [a, b] = s.people, n = p => esc(r.names[p.name] || p.name);
+    const pair = (fa, fb) => b ? `<div class="split"><span>${n(a)}<br><strong>${fa(a)}</strong></span><span style="text-align:right">${n(b)}<br><strong>${fb(b)}</strong></span></div>` : `<strong>${fa(a)}</strong>`;
+    return `<div class="stats">
+      <div><label>Messages</label><strong>${fmt(s.total)}</strong></div><div><label>A day</label><strong>${s.perDay}</strong></div>
+      <div class="w"><label>Who does the talking</label>${pair(p => p.share + '%', p => p.share + '%')}<div class="meter"><i style="width:${a.share}%"></i><i style="width:${b ? b.share : 0}%"></i></div></div>
+      <div><label>Texts first</label><strong>${a.first >= (b ? b.first : 0) ? a.first : b.first}%</strong><div style="font-size:12px;color:var(--muted)">${n(a.first >= (b ? b.first : 0) ? a : b)}</div></div>
+      <div><label>After midnight</label><strong>${s.afterMidnight}%</strong></div>
+      <div class="w"><label>Average reply time</label>${pair(p => p.reply, p => p.reply)}</div>
+      <div><label>Busiest hour</label><strong>${hh(s.busiestHour)}</strong></div><div><label>Voice notes</label><strong>${s.voice}</strong></div>
+      <div><label>Top emojis</label><span class="emo">${s.topEmoji.join('')}</span></div><div><label>Longest silence</label><strong>${s.silence.days} days</strong></div>
+    </div>`;
+  }
+  function chart(r, type) {
+    const s = r.stats, data = type === 'months' ? s.months : s.hours.map((v, i) => [i, v]);
+    const W = 640, H = 170, pad = 22, bw = (W - pad) / data.length, max = Math.max(...data.map(d => d[1]));
+    const bars = data.map(([k, v], i) => {
+      const h = Math.max(2, (v / max) * (H - 40)), x = pad / 2 + i * bw, y = H - 22 - h;
+      const lbl = type === 'months' ? (k.endsWith('-01') || i === 0 ? "'" + k.slice(2, 4) : (k.endsWith('-07') ? 'Jul' : '')) : (k % 6 === 0 ? hh(k) : '');
+      const hot = type === 'hours' ? k === s.busiestHour : v === max;
+      return `<rect x="${x + 1.5}" y="${y}" width="${Math.max(2, bw - 3)}" height="${h}" rx="3" fill="${hot ? '#4a8cf5' : '#d6d6d6'}"><title>${esc(String(k))}: ${v}</title></rect>` +
+        (lbl ? `<text x="${x + bw / 2}" y="${H - 6}" font-size="11" text-anchor="middle" fill="#9a9a9a">${lbl}</text>` : '');
+    }).join('');
+    const cap = type === 'months' ? 'Messages per month' : 'Messages by hour of day';
+    return `<figure class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${cap}">${bars}</svg><figcaption>${cap}</figcaption></figure>`;
+  }
+  function block(r, b) {
+    if (b.p !== undefined) return b.p ? `<p>${esc(b.p)}</p>` : '';
+    if (b.chat) return `<div class="thread">${bubbles(r, b.chat)}</div>`;
+    if (b.big) return `<div class="big">${b.big.map(([n, l]) => `<div><strong>${esc(n)}</strong><span>${esc(l)}</span></div>`).join('')}</div>`;
+    if (b.chart) return chart(r, b.chart);
+    return '';
+  }
+
+  /* ---------- landing: chips ---------- */
+  function chipHTML(item) {
+    if (item.r) return `<button class="chip" data-id="${esc(item.r.id)}"><i style="background:#ffd1e8">${esc(item.r.emoji)}</i>${esc(item.r.label)} ${esc(item.r.emoji)}</button>`;
+    return `<button class="chip add" data-label="${esc(item[0])}" data-emoji="${esc(item[1])}"><i style="background:${item[2]}">${item[1]}</i>${esc(item[0])}</button>`;
+  }
+  function renderChips() {
+    const reps = REPORTS.map(r => ({ r }));
+    const rows = [[], [], []];
+    PLACEHOLDERS.forEach((p, i) => rows[i % 3].push(p));
+    reps.forEach((r, i) => rows[i % 3].splice(1 + (i % 2), 0, r));
+    $('#rows').innerHTML = rows.map((items, i) => {
+      // Each half must be wider than the viewport so the -50% marquee loop never shows a gap.
+      let html = items.map(chipHTML).join('');
+      while (html.split('class="chip').length - 1 < 9) html += items.map(chipHTML).join('');
+      return `<div class="row ${i === 1 ? 'rev' : ''}">${html}${html}</div>`;
+    }).join('');
+    markChips();
+  }
+  function markChips() { document.querySelectorAll('.chip[data-id]').forEach(c => c.classList.toggle('on', c.dataset.id === current?.id)); }
+  $('#rows').addEventListener('click', e => {
+    const c = e.target.closest('.chip'); if (!c) return;
+    if (c.dataset.id) { select(REPORTS.find(r => r.id === c.dataset.id)); $('#stage').scrollIntoView({ block: 'center' }); }
+    else openUpload({ label: c.dataset.label, emoji: c.dataset.emoji });
+  });
+
+  /* ---------- landing: demo story (scan → stats → outline → verdict) ---------- */
+  let current = null, timers = [];
+  const DUR = [5600, 5200, 5200];
+  function select(r) {
+    if (!r) return;
+    current = r; markChips(); timers.forEach(clearTimeout); timers = [];
+    $('#scanCount').textContent = fmt(r.stats.total) + ' messages';
+    const feed = $('#feed'); feed.innerHTML = bubbles(r, r.preview); feed.style.transition = 'none'; feed.style.transform = 'translateY(0)';
+    $('#pStats').innerHTML = statsHTML(r);
+    $('#pOutline').innerHTML = `<div class="card outline"><h3>${esc(r.title)}</h3><div class="by"><span class="logo av">${AVATAR}</span>Bunty</div>` +
+      r.chapters.slice(0, 4).map((c, i) => `<h4>${esc(c.h)}</h4>${'<div class="sk"></div>'.repeat(i % 2 ? 4 : 3)}`).join('') + '</div>';
+    $('#pVerdict').innerHTML = `<div class="card verdict-mini"><div class="by" style="margin:0"><span class="logo av">${AVATAR}</span>Bunty's verdict</div>` +
+      `<p>${esc(r.verdict.p[0])}</p><a class="read" href="#/r/${esc(r.id)}">Read the full report →</a></div>`;
+    renderQuotes(r);
+    go(0);
+  }
+  function go(i) {
+    document.querySelectorAll('.panel').forEach((p, j) => p.classList.toggle('on', j === i));
+    document.querySelectorAll('.bars b').forEach((b, j) => {
+      b.style.transition = 'none'; b.style.width = j < i ? '100%' : '0';
+      if (j === i && i < 3) requestAnimationFrame(() => requestAnimationFrame(() => { b.style.transition = `width ${DUR[i]}ms linear`; b.style.width = '100%'; }));
+      if (j === 3 && i === 3) b.style.width = '100%';
+    });
+    if (i === 0) {
+      const feed = $('#feed');
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        feed.style.transition = 'transform 5.2s linear';
+        feed.style.transform = `translateY(-${Math.max(0, feed.scrollHeight - 340)}px)`;
+      }));
+    }
+    if (i < 3) timers.push(setTimeout(() => go(i + 1), DUR[i]));
+  }
+  $('#screen').addEventListener('click', e => {
+    if (e.target.closest('a')) return;
+    const on = [...document.querySelectorAll('.panel')].findIndex(p => p.classList.contains('on'));
+    timers.forEach(clearTimeout); go(Math.min(3, on + 1));
+  });
+
+  function renderQuotes(r) {
+    $('#quotesFor').textContent = `From the ${r.label} chat`;
+    $('#quotes').innerHTML = (r.quotes || []).map(q => `<article class="q"><b>${esc(q.who)}</b><p>${esc(q.x)}</p>` +
+      `<footer><span class="tag">${esc(q.tag)}</span><span>${esc(q.date)} · ${esc(r.app)}</span></footer></article>`).join('');
+    const tot = REPORTS.reduce((s, x) => s + x.stats.total, 0), days = REPORTS.reduce((s, x) => s + x.stats.spanDays, 0);
+    $('#cMsgs').textContent = fmt(tot); $('#cDays').textContent = fmt(days); $('#cReps').textContent = fmt(REPORTS.length);
+  }
+
+  /* ---------- full report ---------- */
+  function renderReport(r) {
+    const chapters = r.chapters.map((c, i) => `<h2><small>Chapter ${i + 1}</small>${esc(c.h)}</h2>${c.blocks.map(b => block(r, b)).join('')}`).join('');
+    const awards = (r.awards || []).map(a => `<div class="award"><div class="i">${esc(a.icon)}</div><b>${esc(a.title)}</b><em>${esc(a.who)}</em><p>${esc(a.why)}</p></div>`).join('');
+    $('#art').innerHTML = `<a class="back" href="#/">← All chats</a>
+      <div style="margin-top:28px" class="kicker"><span class="tag">${esc(r.emoji)} ${esc(r.tag)}</span>${esc(r.app)} · ${esc(r.stats.from)} → ${esc(r.stats.to)}</div>
+      <h1>${esc(r.title)}</h1><div class="by"><span class="logo av">${AVATAR}</span><span><b style="color:var(--ink)">Bunty</b> · read ${fmt(r.stats.total)} messages</span></div>
+      <p class="intro">${esc(r.intro)}</p>${statsHTML(r)}${chapters}
+      ${awards ? `<h2><small>Bunty's awards</small>Superlatives</h2><div class="awards">${awards}</div>` : ''}
+      <section class="verdict"><h2>${esc(r.verdict.h)}</h2>${r.verdict.p.map(p => `<p>${esc(p)}</p>`).join('')}</section>
+      <div style="display:flex;gap:10px;justify-content:space-between;margin-top:30px;flex-wrap:wrap"><a class="back" href="#/">← All chats</a>
+      ${r.uploaded ? `<button class="back" id="forget">Forget this chat</button>` : ''}</div>`;
+    const f = $('#forget');
+    if (f) f.onclick = () => { REPORTS = REPORTS.filter(x => x.id !== r.id); persist(); renderChips(); select(REPORTS[0]); location.hash = '#/'; };
+  }
+  function route() {
+    const m = location.hash.match(/^#\/r\/(.+)$/), r = m && REPORTS.find(x => x.id === decodeURIComponent(m[1]));
+    document.body.classList.toggle('reading', !!r);
+    if (r) { renderReport(r); window.scrollTo({ top: 0, behavior: 'instant' }); document.title = r.title + ' — What Bunty Thinks'; }
+    else document.title = 'What Bunty Thinks';
+  }
+  window.addEventListener('hashchange', route);
+
+  /* ---------- upload ---------- */
+  let parsed = null, preset = {};
+  const modal = $('#modal');
+  function openUpload(p = {}) {
+    preset = p; parsed = null; $('#fileName').textContent = ''; $('#err').textContent = ''; $('#who').hidden = true; $('#gen').disabled = true;
+    $('#label').value = p.label || ''; $('#reading').hidden = true; $('#form').hidden = false; modal.classList.add('open');
+  }
+  const closeUpload = () => modal.classList.remove('open');
+  document.querySelectorAll('[data-try]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); openUpload(); }));
+  $('#x').onclick = closeUpload;
+  modal.addEventListener('click', e => { if (e.target === modal) closeUpload(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeUpload(); });
+
+  function loadScript(src) {
+    return new Promise((ok, fail) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => fail(new Error('Could not load the zip reader. Upload the _chat.txt file instead.')); document.head.appendChild(s); });
+  }
+  async function readFile(file) {
+    if (/\.zip$/i.test(file.name)) {
+      if (!window.JSZip) await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js');
+      const zip = await window.JSZip.loadAsync(file);
+      const entry = Object.values(zip.files).find(f => /_chat\.txt$|\.txt$/i.test(f.name) && !f.dir);
+      if (!entry) throw new Error('No chat .txt found inside that zip.');
+      return entry.async('string');
+    }
+    return file.text();
+  }
+  // Name the chat after the other person, unless the user picked a chip or typed a name.
+  let autoLabel = true;
+  function fillLabel(people) {
+    if (!autoLabel) return;
+    const others = people.filter(p => p !== $('#me').value);
+    $('#label').value = people.length > 2 ? 'Group chat' : others[0] || people[0];
+  }
+  $('#label').addEventListener('input', () => { autoLabel = false; });
+  async function take(file) {
+    $('#err').textContent = ''; $('#fileName').textContent = file.name;
+    try {
+      const msgs = window.Analyzer.parse(await readFile(file));
+      if (msgs.length < 20) throw new Error("That doesn't look like a WhatsApp export (found " + msgs.length + ' messages).');
+      parsed = msgs;
+      const people = [...new Set(msgs.map(m => m.a))];
+      $('#me').innerHTML = people.map(p => `<option>${esc(p)}</option>`).join('');
+      $('#who').hidden = false; $('#gen').disabled = false;
+      autoLabel = !$('#label').value;
+      fillLabel(people);
+      $('#me').onchange = () => fillLabel(people);
+    } catch (e) { parsed = null; $('#gen').disabled = true; $('#err').textContent = e.message; }
+  }
+  $('#file').addEventListener('change', e => e.target.files[0] && take(e.target.files[0]));
+  const drop = $('#drop');
+  ['dragenter', 'dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => e.dataTransfer.files[0] && take(e.dataTransfer.files[0]));
+  $('#gen').onclick = () => {
+    if (!parsed) return;
+    $('#form').hidden = true; $('#reading').hidden = false;
+    $('#readingCount').textContent = `Reading ${fmt(parsed.length)} messages…`;
+    setTimeout(() => {
+      try {
+        const stats = window.Analyzer.analyze(parsed);
+        const r = window.Writer.write(parsed, stats, { label: $('#label').value.trim(), emoji: preset.emoji, tag: $('#tag').value, me: $('#me').value });
+        r.uploaded = true; parsed = null;
+        REPORTS.push(r); persist(); renderChips(); select(r); closeUpload();
+        location.hash = '#/r/' + r.id;
+      } catch (e) {
+        $('#reading').hidden = true; $('#form').hidden = false;
+        $('#err').textContent = 'Bunty got confused by this chat: ' + e.message;
+      }
+    }, 1400);
+  };
+
+  renderChips(); select(REPORTS[0]); route();
+})();
+</script>
+</body>
+</html>

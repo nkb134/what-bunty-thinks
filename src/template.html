@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>What Brandon Thinks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>/*STYLES*/</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a href="#/" aria-label="Home"><span class="logo av"></span></a>
+  <button class="pill" data-try>Try It Now <span aria-hidden="true">→</span></button>
+</div></nav>
+
+<main class="home">
+  <section class="hero">
+    <div class="cluster" aria-hidden="true">
+      <span style="background:#c9f0c4">💍</span><span style="background:#e8f7e4">💬</span><span style="background:#d9d0ff">💔</span>
+      <span class="av" style="background:#5b95f2"></span>
+      <span style="background:#ffe08a">😂</span><span style="background:#ffc9a8">🙈</span><span style="background:#dbe9ff">✈️</span>
+    </div>
+    <h1 class="hl">Upload a chat. Brandon tells you what's really going on.</h1>
+    <p class="sub">Brandon reads every message and writes what he really thinks about everyone in it.</p>
+    <button class="cta" data-try>Try It Now <span aria-hidden="true">→</span></button>
+    <div class="rows" id="rows"></div>
+
+    <div class="stage" id="stage">
+      <div class="bars"><span><b></b></span><span><b></b></span><span><b></b></span><span><b></b></span></div>
+      <div class="screen" id="screen">
+        <div class="panel scan"><div class="count" id="scanCount"></div><div class="feed" id="feed"></div>
+          <div class="scanner"><span class="logo av"></span></div></div>
+        <div class="panel" id="pStats"></div>
+        <div class="panel" id="pOutline"></div>
+        <div class="panel" id="pVerdict"></div>
+      </div>
+      <p class="tapnote"><span>↑</span>Tap another chat</p>
+    </div>
+  </section>
+
+  <section class="sec wrap">
+    <h2>Lines Brandon underlined</h2>
+    <p class="lede" id="quotesFor"></p>
+    <div class="quotes" id="quotes"></div>
+  </section>
+
+  <section class="sec wrap">
+    <h2>Brandon has been busy</h2>
+    <div class="counters">
+      <div><strong id="cMsgs">0</strong><span>Messages read</span></div>
+      <div><strong id="cDays">0</strong><span>Days of chat covered</span></div>
+      <div><strong id="cReps">0</strong><span>Reports written</span></div>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2 class="hl">Your next chat is next.</h2>
+    <button class="cta" data-try>Try It Now <span aria-hidden="true">→</span></button>
+  </section>
+</main>
+
+<main class="report"><article class="art" id="art"></article></main>
+
+<footer class="foot"><div class="wrap">
+  <span>© 2026 What Brandon Thinks</span>
+  <span>Runs entirely in your browser. Chats are never uploaded anywhere.</span>
+</div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="sheet">
+    <button class="close" id="x" aria-label="Close">×</button>
+    <div id="form">
+      <h3 id="mTitle">Give Brandon a chat</h3>
+      <p class="muted">Export it from WhatsApp, then drop it here.</p>
+      <ol class="steps">
+        <li>Open the chat in WhatsApp, tap the name at the top</li>
+        <li>Choose <b>Export Chat</b> → <b>Without Media</b></li>
+        <li>Save the .zip (or the _chat.txt inside it)</li>
+      </ol>
+      <label class="drop" id="drop">
+        <strong>Drop the .zip or .txt here</strong><span>or click to choose a file</span><span id="fileName" style="color:var(--blue-d)"></span>
+        <input type="file" id="file" accept=".zip,.txt,text/plain,application/zip" hidden>
+      </label>
+      <div id="who" hidden>
+        <div class="row2">
+          <label class="field">Chat name<input id="label" maxlength="40"></label>
+          <label class="field">They are your…<select id="tag"><option>Partner</option><option>Friend</option><option>Family</option><option>Group</option><option>Crush</option><option>Ex</option><option>Coworker</option></select></label>
+        </div>
+        <label class="field">Which one is you?<select id="me"></select></label>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+      <button class="go" id="gen" disabled>Ask Brandon →</button>
+      <p class="priv">🔒 Your chat is read on this device only. Reports are saved in this browser so you can reopen them.</p>
+    </div>
+    <div class="reading-anim" id="reading" hidden><span class="logo av"></span><b id="readingCount"></b><p class="muted">Brandon is reading between the lines.</p></div>
+  </div>
+</div>
+
+<script>window.PRELOADED = /*DATA*/;</script>
+<script>/*ANALYZER*/</script>
+<script>/*WRITER*/</script>
+<script>/*APP*/</script>
+</body>
+</html>
